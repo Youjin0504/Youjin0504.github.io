@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>장유진 — SAP Technical Consultant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F2F3F5;
+    --bg-alt: #EAEBEE;
+    --ink: #191C1F;
+    --muted: #5B6168;
+    --line: #D7D9DE;
+    --accent: #1F4FBF;
+    --accent-soft: #E3EAFA;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  ::selection{ background: var(--accent-soft); color: var(--accent); }
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{ max-width: 920px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky; top: 0;
+    background: rgba(247,248,246,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content: space-between; height: 64px; }
+  .brand{ font-family: var(--mono); font-size: 14px; letter-spacing: 0.02em; color: var(--ink); }
+  .brand span{ color: var(--accent); }
+  .navlinks{ display:flex; gap: 22px; font-size: 13.5px; color: var(--muted); flex-wrap: wrap; }
+  .navlinks a:hover{ color: var(--ink); }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 96px 0 72px; }
+  .eyebrow{
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    letter-spacing: 0.04em; margin-bottom: 18px; display:flex; align-items:center; gap: 10px;
+  }
+  .eyebrow::before{ content:""; width: 7px; height:7px; border-radius: 50%; background: var(--accent); display:inline-block; }
+  h1{
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em;
+  }
+  .role{
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(18px, 2.4vw, 24px); color: var(--muted); margin-top: 12px;
+  }
+  .lede{ max-width: 620px; margin-top: 20px; color: var(--muted); font-size: 16px; }
+
+  .cds-card{
+    margin-top: 44px; border: 1px solid var(--line); border-radius: 6px;
+    background: #FCFDFC; overflow: hidden; box-shadow: 0 1px 0 rgba(18,24,27,0.02);
+  }
+  .cds-titlebar{
+    display:flex; align-items:center; gap: 8px; padding: 10px 16px;
+    border-bottom: 1px solid var(--line); background: var(--bg-alt);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+  .cds-dot{ width:8px; height:8px; border-radius:50%; background: var(--line); }
+  .cds-body{ padding: 20px 24px; font-family: var(--mono); font-size: 13.5px; line-height: 1.9; overflow-x: auto; }
+  .cds-preline{ white-space: pre; }
+  .cds-fields{
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    column-gap: 16px;
+    padding-left: 4ch;
+    white-space: nowrap;
+  }
+  .frow{ display: contents; }
+  .cds-kw{ color: var(--accent); }
+  .cds-field{ color: var(--muted); }
+  .cds-val{ color: var(--ink); font-weight: 500; }
+  .cds-comment{ color: #9AA4AC; }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding: 64px 0; border-top: 1px solid var(--line); }
+  .sec-head{ display:flex; align-items: baseline; justify-content: space-between; margin-bottom: 36px; }
+  .sec-title{ font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+  .sec-num{ font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+  /* ---------- STACK ---------- */
+  .stack-row{
+    display:grid; grid-template-columns: 40px 200px 1fr; gap: 20px;
+    padding: 18px 0; border-bottom: 1px solid var(--line); align-items: start;
+  }
+  .stack-row:last-child{ border-bottom: none; }
+  .stack-idx{ font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .stack-layer{ font-family: var(--display); font-weight: 600; font-size: 15px; }
+  .stack-items{ display:flex; flex-wrap: wrap; gap: 8px; }
+  .tag{
+    font-family: var(--mono); font-size: 12.5px; padding: 4px 10px;
+    background: var(--accent-soft); color: var(--accent); border-radius: 4px;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-row{ display:grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 22px 0; }
+  .exp-period{ font-family: var(--mono); font-size: 13px; color: var(--accent); padding-top: 2px; }
+  .exp-role{ font-family: var(--display); font-weight: 600; font-size: 16px; }
+  .exp-company{ color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .exp-desc{ margin-top: 10px; font-size: 14.5px; color: var(--ink); opacity: 0.85; max-width: 560px; }
+
+  /* ---------- PROJECTS ---------- */
+  .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+  /* ---------- PROJECT CARDS ---------- */
+  .proj-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .proj-group-label{
+    grid-column: 1 / -1; display:flex; align-items:center; gap: 8px;
+    font-family: var(--mono); font-weight: 600; font-size: 12.5px; color: var(--accent);
+    letter-spacing: 0.04em; margin-top: 28px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+  }
+  .proj-group-label::before{ content:""; width: 6px; height:6px; border-radius:50%; background: var(--accent); flex-shrink:0; }
+  .proj-grid > .proj-group-label:first-child{ margin-top: 0; }
+  .proj-card{
+    border: 1px solid var(--line); border-radius: 6px; padding: 20px; background: #FCFDFC;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .proj-card:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .proj-meta{ display:flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .proj-tag{ font-family: var(--mono); font-size: 10.5px; color: var(--accent); letter-spacing: 0.02em; }
+  .proj-period{ font-family: var(--mono); font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+  .proj-title{ font-family: var(--display); font-weight: 600; font-size: 15.5px; margin: 8px 0 14px; }
+  .proj-row{ display:grid; grid-template-columns: 46px 1fr; gap: 10px; padding: 6px 0; font-size: 12.5px; }
+  .proj-label{ font-family: var(--mono); font-size: 11px; color: var(--muted); padding-top: 1px; }
+  .proj-value{ color: var(--ink); opacity: 0.85; line-height: 1.55; }
+  .proj-value ul{ list-style: none; }
+  .proj-value li{ position: relative; padding-left: 12px; margin-bottom: 4px; }
+  .proj-value li:last-child{ margin-bottom: 0; }
+  .proj-value li::before{ content:"–"; position: absolute; left: 0; color: var(--accent); }
+  .card{
+    border: 1px solid var(--line); border-radius: 6px; padding: 22px; background: #FCFDFC;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .card:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .card-tag{ font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.02em; }
+  .card-period{ font-family: var(--mono); font-size: 11px; color: var(--muted); float: right; }
+  .card-title{ font-family: var(--display); font-weight: 600; font-size: 16px; margin-top: 8px; }
+  .card-desc{ font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+
+  /* ---------- COURSEWORK ---------- */
+  .course-row{ display:grid; grid-template-columns: 220px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .course-row:last-child{ border-bottom: none; }
+  .course-name{ font-family: var(--display); font-weight: 600; font-size: 14.5px; }
+  .course-desc{ font-size: 14px; color: var(--muted); }
+
+  /* ---------- CREDENTIALS ---------- */
+  .cred-group{ margin-bottom: 40px; }
+  .cred-group:last-child{ margin-bottom: 0; }
+  .cred-label{ font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.04em; margin-bottom: 14px; }
+  .edu-row{ font-size: 14.5px; }
+  .edu-school{ font-family: var(--display); font-weight: 600; font-size: 16px; }
+  .edu-detail{ color: var(--muted); margin-top: 4px; font-size: 14px; }
+  .chip-list{ display:flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .chip{
+    font-size: 12.5px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 20px; color: var(--ink);
+  }
+  .chip .chip-date{ font-family: var(--mono); color: var(--muted); margin-left: 6px; font-size: 11px; }
+  .award-row{ display:grid; grid-template-columns: 1fr auto auto; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; gap: 14px; }
+  .award-row:last-child{ border-bottom: none; }
+  .award-name{ font-weight: 500; }
+  .award-grade{ font-family: var(--mono); font-size: 11.5px; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 4px; white-space: nowrap; }
+  .award-meta{ font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .research-row{ font-size: 14px; }
+  .research-title{ font-family: var(--display); font-weight: 600; font-size: 15px; }
+  .research-meta{ color: var(--muted); margin-top: 4px; font-size: 13.5px; }
+  .research-link{
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--ink);
+    border: 1px solid var(--line); border-radius: 20px; padding: 6px 14px;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .research-link:hover{ color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{ border-top: 1px solid var(--line); padding: 48px 0 64px; }
+  .contact-title{ font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4vw, 36px); letter-spacing: -0.01em; margin-bottom: 20px; }
+  .contact-links{ display:flex; gap: 24px; flex-wrap: wrap; }
+  .contact-links a{ font-family: var(--mono); font-size: 14px; color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color .15s ease, color .15s ease; }
+  .contact-links a:hover{ color: var(--accent); border-color: var(--accent); }
+  .foot-note{ margin-top: 40px; font-size: 12.5px; color: var(--muted); font-family: var(--mono); }
+
+  .reveal{ opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px){
+    .stack-row{ grid-template-columns: 1fr; gap: 6px; }
+    .stack-idx{ display:none; }
+    .exp-row{ grid-template-columns: 1fr; gap: 6px; }
+    .grid-2{ grid-template-columns: 1fr; }
+    .proj-grid{ grid-template-columns: 1fr; }
+    .proj-row{ grid-template-columns: 1fr; gap: 4px; }
+    .award-row{ grid-template-columns: 1fr auto; row-gap: 4px; }
+    .award-meta{ grid-column: 1 / -1; }
+    .course-row{ grid-template-columns: 1fr; gap: 4px; }
+    .cds-body{ font-size: 12px; }
+  }
+
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ transition: none; opacity: 1; transform: none; } html{ scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">장유진<span>.</span>consultant</div>
+    <div class="navlinks">
+      <a href="#stack">Stack</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#coursework">Coursework</a>
+      <a href="#contact">Contact</a>
+      <a href="https://tested-robe-577.notion.site/Portfolio-754ecada48c144319c1ddb5d42e89bb1?source=copy_link" target="_blank" rel="noopener">Notion ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="border-top:none; padding-top: 72px;">
+    <div class="eyebrow">SAP TECHNICAL CONSULTANT</div>
+    <h1>장유진</h1>
+    <div class="role">ABAP/RAP · SAP Datasphere · AI 자동화</div>
+    <p class="lede">
+      비즈니스 요구사항을 구현하는 기술력과, 새로운 SAP 트렌드를 빠르게 습득하는 학습력을 함께 갖췄습니다.
+    </p>
+
+    <div class="cds-card reveal">
+      <div class="cds-titlebar"><span class="cds-dot"></span> zintroduction.ddls.asddls</div>
+      <div class="cds-body"><div class="cds-preline"><span class="cds-kw">@AbapCatalog.viewEnhancementCategory</span>: [#NONE]</div><div class="cds-preline"><span class="cds-kw">@AccessControl.authorizationCheck</span>: #NOT_REQUIRED</div><div class="cds-preline"><span class="cds-kw">@EndUserText.label</span>: <span class="cds-val">'introduction'</span></div><div class="cds-preline"><span class="cds-kw">define view entity</span> Z_R_Introduction <span class="cds-kw">as select from</span> zintroduction</div><div class="cds-preline">{</div><div class="cds-fields">
+<div class="frow"><span class="cds-kw">key</span><span class="cds-field">name</span><span class="cds-kw">as</span><span class="cds-val">'장유진',</span></div>
+<div class="frow"><span></span><span class="cds-field">role</span><span class="cds-kw">as</span><span class="cds-val">'SAP Technical Consultant',</span></div>
+<div class="frow"><span></span><span class="cds-field">stack</span><span class="cds-kw">as</span><span class="cds-val">'SAP ERP, ABAP, SAP BTP, Datasphere, AI',</span></div>
+<div class="frow"><span></span><span class="cds-field">mindset</span><span class="cds-kw">as</span><span class="cds-val">'호기심, 학습력, 혁신'</span></div>
+</div><div class="cds-preline">}</div></div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="sec-head"><div class="sec-title">Stack</div><div class="sec-num">04 layers</div></div>
+
+    <div class="stack-row reveal">
+      <div class="stack-idx">01</div>
+      <div class="stack-layer">SAP</div>
+      <div class="stack-items">
+        <span class="tag">Cloud ABAP</span><span class="tag">RAP</span><span class="tag">CDS View</span>
+        <span class="tag">Fiori</span><span class="tag">Datasphere</span><span class="tag">SAC</span>
+        <span class="tag">UI5</span><span class="tag">MM · SD · FI · CO · PP</span>
+      </div>
+    </div>
+
+    <div class="stack-row reveal">
+      <div class="stack-idx">02</div>
+      <div class="stack-layer">DB</div>
+      <div class="stack-items"><span class="tag">HANA SQL</span><span class="tag">Stored Procedure</span></div>
+    </div>
+
+    <div class="stack-row reveal">
+      <div class="stack-idx">03</div>
+      <div class="stack-layer">Language</div>
+      <div class="stack-items">
+        <span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Java</span>
+        <span class="tag">Python</span><span class="tag">SQL</span>
+      </div>
+    </div>
+
+    <div class="stack-row reveal">
+      <div class="stack-idx">04</div>
+      <div class="stack-layer">AI / Automation</div>
+      <div class="stack-items"><span class="tag">MCP Server</span><span class="tag">LLM</span><span class="tag">UiPath RPA</span></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head"><div class="sec-title">Experience</div><div class="sec-num">current</div></div>
+    <div class="exp-row reveal">
+      <div class="exp-period">2025.03 — 재직중</div>
+      <div>
+        <div class="exp-role">Analytics 사업부 대리</div>
+        <div class="exp-company">SAP 컨설팅 · 정규직</div>
+        <div class="exp-desc"><strong style="font-family:var(--display); font-weight:600; color:var(--ink);">SAP Technical Consultant</strong><br>ABAP, RAP, CDS View, Datasphere, MCP 기반 AI 프로젝트 담당</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head"><div class="sec-title">Projects</div><div class="sec-num">07 selected</div></div>
+
+    <div class="proj-grid">
+      <div class="proj-group-label reveal">프로젝트</div>
+
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">ABAP / DATASPHERE</span><span class="proj-period">2025.04–2026.01</span></div>
+        <div class="proj-title">K사 SAP Datasphere Conversion</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">Cloud ABAP Conversion</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">BW4/HANA → SAP Datasphere 전환 프로젝트</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">Cloud ABAP 전환 및 신규 기능 개발로 Datasphere 구축 지원</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>Cloud ABAP Conversion (Class, Function Module)</li>
+          <li>RAP 기반 Fiori Elements 화면 개발</li>
+          <li>HANA SQL Stored Procedure 개발</li>
+          <li>Datasphere/SAC 권한 관리</li>
+        </ul></div></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">CDS VIEW / DATASPHERE</span><span class="proj-period">2025.06–2026.08(예정)</span></div>
+        <div class="proj-title">L사 Loss율 차이분석 및 공정별 원가 산출 프로젝트</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">CDS View / Stored Procedure 개발</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">공정별 원가산출 프로그램 개발</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">특정 사업부의 Loss율 차이분석 및 공정별 원가의 상세 정보 제공</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>CDS View 설계 참여 및 구현</li>
+          <li>Stored Procedure 구현</li>
+          <li>Datasphere 데이터 적재</li>
+        </ul></div></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">AI / DATASPHERE</span><span class="proj-period">2025.06–진행중</span></div>
+        <div class="proj-title">Datasphere MCP 국가지원사업</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">Datasphere 자문 참여</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">AI 기반 분석 시나리오 추천, SQL View/AM 자동 생성·배포 솔루션 개발 국가지원사업</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">Datasphere 데이터 분석 환경 구축을 AI로 자동화, 개발 리소스 절감</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>Datasphere MCP 환경 구성 지원</li>
+          <li>기능 요구사항 검토 및 의견 제공</li>
+          <li>구현 결과물 검증</li>
+        </ul></div></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">AI / ABAP</span><span class="proj-period">2025.06–진행중</span></div>
+        <div class="proj-title">L사 해외법인 ECC Conversion</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">ABAP Conversion 로직 검증</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">ECC → S/4HANA 전환. ATC 지적 항목을 ABAP ADT MCP 기반 AI로 자동 변환</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">AI 기반 ABAP 코드 자동 변환의 실무 적용 가능성 검증 및 품질 확보</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>ATC 지적 항목 AI 변환 결과 검증</li>
+          <li>변환 적정성 판단 및 프롬프트 의견 제공</li>
+        </ul></div></div>
+      </div>
+
+      <div class="proj-group-label reveal">운영 · 유지보수</div>
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">MAINTENANCE / DATASPHERE / SAC</span><span class="proj-period">2025.11–진행중</span></div>
+        <div class="proj-title">L사 SAP Datasphere 유지보수</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">Datasphere 운영 담당</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">SAP Datasphere 시스템 운영 유지</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">구축된 Datasphere 시스템의 안정적 운영 및 품질 개선</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>데이터 플로우 모델링 개선</li>
+          <li>BW Bridge 프로세스 체인 모니터링</li>
+          <li>SAC/Datasphere 권한 관리</li>
+          <li>월말 CO 마감 데이터 적재 지원</li>
+        </ul></div></div>
+      </div>
+
+      <div class="proj-group-label reveal">보조</div>
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">SAC</span><span class="proj-period">2026.04–2026.06</span></div>
+        <div class="proj-title">C사 SAC Custom Widget 개발 보조</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">Custom Widget 개발 보조</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">기존 UI → SAC 전환 프로젝트, Custom Widget 방식 채택</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">SAC Custom Widget 개발 보조 및 기존 스토리 성능 개선</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>JavaScript 기반 Custom Widget 개발 보조</li>
+          <li>위젯 조합 → Custom Widget 전환으로 유지보수성 향상</li>
+          <li>스크립트 최적화로 로딩 속도 개선</li>
+        </ul></div></div>
+      </div>
+
+      <div class="proj-group-label reveal">사내기술활동</div>
+      <div class="proj-card reveal">
+        <div class="proj-meta"><span class="proj-tag">AI / MCP</span><span class="proj-period">2026.04–진행중</span></div>
+        <div class="proj-title">ABAP ADT MCP 기반 AI 개발 자동화 검토</div>
+        <div class="proj-row"><div class="proj-label">역할</div><div class="proj-value">AI 개발 도구 검토 및 지원</div></div>
+        <div class="proj-row"><div class="proj-label">개요</div><div class="proj-value">SAP 개발에 AI 도구 활용 가능성 검토 및 실무 적용 방안 마련</div></div>
+        <div class="proj-row"><div class="proj-label">목적</div><div class="proj-value">AI 개발 자동화 가능성 검증 및 솔루션/프로젝트 제안 시 활용</div></div>
+        <div class="proj-row"><div class="proj-label">수행</div><div class="proj-value"><ul>
+          <li>ABAP ADT MCP Server 환경 구성 및 테스트</li>
+          <li>LLM 통한 RAP 기반 OData 서비스 자동 생성 테스트</li>
+          <li>Released CDS View + RAP Clean Core 구조 전환 비교</li>
+          <li>테스트 결과 기반 솔루션 제안 및 실무 지원</li>
+        </ul></div></div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CREDENTIALS -->
+  <section id="credentials">
+    <div class="sec-head"><div class="sec-title">Credentials</div><div class="sec-num">education · certs · awards</div></div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">EDUCATION</div>
+      <div class="edu-row">
+        <div class="edu-school">명지대학교 — 경영정보학</div>
+        <div class="edu-detail">연계전공: 프로세스자동화경영 · 2021.03–2025.08 · 학점 3.85 · 졸업</div>
+      </div>
+    </div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">CERTIFICATIONS</div>
+      <div class="chip-list">
+        <span class="chip">SQL 개발자<span class="chip-date">2023.10</span></span>
+        <span class="chip">Back-End Developer – ABAP Cloud<span class="chip-date">2023.10</span></span>
+        <span class="chip">SAP S/4HANA Cloud Private Edition, Financial Accounting<span class="chip-date">2024.08</span></span>
+        <span class="chip">SAP S/4HANA Cloud Private Edition, Sourcing and Procurement<span class="chip-date">2024.09</span></span>
+        <span class="chip">SAP S/4HANA Cloud Private Edition, Sales<span class="chip-date">2025.07</span></span>
+      </div>
+    </div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">LANGUAGE</div>
+      <div class="chip-list">
+        <span class="chip">OPIc 영어 – Intermediate High<span class="chip-date">2025.02</span></span>
+      </div>
+    </div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">TRAINING</div>
+      <div class="course-row"><div class="course-name">LLM 역량강화캠프</div><div class="course-desc">명지대학교·스쿨브리즈 · 2024.06.17–2024.06.19</div></div>
+      <div class="course-row"><div class="course-name">RPA 역량강화캠프 (AutomateONE)</div><div class="course-desc">명지대학교·스쿨브리즈 · 2024.06.20–2024.06.21</div></div>
+      <div class="course-row"><div class="course-name">Exploring SAP Business Technology Platform</div><div class="course-desc">SAP Learning · 2026.03.22 (취득일)</div></div>
+      <div class="course-row"><div class="course-name">Clean Core를 위한 ABAP RESTful Application Programming</div><div class="course-desc">SAP Learning · 2026.06.15–2026.06.19</div></div>
+    </div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">AWARDS</div>
+      <div class="award-row"><span class="award-name">대학연합 AI RPA Hackathon</span><span class="award-grade">장려상</span><span class="award-meta">2024.07 · 한국환경공단</span></div>
+      <div class="award-row"><span class="award-name">캡스톤 경진대회 (ERP)</span><span class="award-grade">최우수상</span><span class="award-meta">2024.12 · SW인재육성사업단</span></div>
+      <div class="award-row"><span class="award-name">2025 하계종합학술대회 대학생논문경진대회</span><span class="award-grade">은상</span><span class="award-meta">2025.07 · 한국디지털콘텐츠학회</span></div>
+    </div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">RESEARCH</div>
+      <div class="research-row">
+        <div class="research-title">머신러닝과 SHAP 분석 기반 항공기 지연 예측 모델</div>
+        <div class="research-meta">한국정보기술학회논문지 제23권 제7호 (JKIIT, Vol.23, No.7) · KCI 등재</div>
+        <a class="research-link" href="https://www.dbpia.co.kr/journal/voisDetail?voisId=VOIS00779568" target="_blank" rel="noopener">논문 보기 ↗</a>
+      </div>
+    </div>
+
+    <div class="cred-group reveal">
+      <div class="cred-label">STUDY</div>
+      <div class="course-row"><div class="course-name">SAP Clean Core 스터디</div><div class="course-desc">2026.03–2026.06 · Fiori Launchpad, Fiori Elements App, Fiori Tools, UI Enhancement, CDS View, Embedded Analytics, Clean Core Extensibility 학습 및 실습</div></div>
+      <div class="course-row"><div class="course-name">AI Agent 스터디</div><div class="course-desc">2025.12–진행중 · Mastra 프레임워크 기반 AI Agent 개발 · SAP ABAP 연계 MCP에서 tool 구성 방식(Full vs Compact)에 따른 LLM 성능 비교 연구 진행중</div></div>
+    </div>
+  </section>
+
+
+  <!-- COURSEWORK -->
+  <section id="coursework">
+    <div class="sec-head"><div class="sec-title">Academic Coursework</div><div class="sec-num">명지대학교</div></div>
+
+    <div class="course-row reveal"><div class="course-name">ERP개론</div><div class="course-desc">SD·MM·PP·FI 케이스스터디 실습</div></div>
+    <div class="course-row reveal"><div class="course-name">ERP프로그래밍실습</div><div class="course-desc">ABAP 실습</div></div>
+    <div class="course-row reveal"><div class="course-name">ERP와 SCM</div><div class="course-desc">SD·MM·PP·FI·CO 컨피규레이션 실습</div></div>
+    <div class="course-row reveal"><div class="course-name">회계정보시스템</div><div class="course-desc">FI·CO 케이스스터디 및 컨피규레이션 실습</div></div>
+    <div class="course-row reveal"><div class="course-name">캡스톤 디자인 (ERP)</div><div class="course-desc">가상 기업의 컨설턴트가 되어 진행한 실전 ERP 컨피규레이션 팀프로젝트</div></div>
+    <div class="course-row reveal"><div class="course-name">SW자동화실습</div><div class="course-desc">ABAP 실습</div></div>
+    <div class="course-row reveal"><div class="course-name">로보틱프로세스자동화</div><div class="course-desc">UiPath 기반 — 교내 국제교류처 유학생 휴복학·비자 관리 프로세스 자동화 팀프로젝트</div></div>
+    <div class="course-row reveal"><div class="course-name">머신러닝</div><div class="course-desc">SHAP 분석 기반 항공기 지연 예측 모델 개발 팀프로젝트</div></div>
+  </section>
+
+  <!-- ADDITIONAL MATERIALS -->
+  <section id="materials">
+    <div class="sec-head"><div class="sec-title">추가 자료</div><div class="sec-num">notion</div></div>
+    <a class="research-link" href="https://tested-robe-577.notion.site/Portfolio-754ecada48c144319c1ddb5d42e89bb1?source=copy_link" target="_blank" rel="noopener">교내 활동, 공모전, 연구자료 보기 ↗</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="contact-title">Contact</div>
+    <div class="contact-links">
+      <a href="mailto:dbwls7201@naver.com">dbwls7201@naver.com</a>
+    </div>
+    <div class="foot-note">© 2026 장유진. Built with care.</div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  items.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
